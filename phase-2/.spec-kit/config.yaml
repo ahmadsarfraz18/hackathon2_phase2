@@ -1,0 +1,31 @@
+project:
+  name: "Hackathon Phase-2: Evolution of Todo"
+  summary: "Full-stack web application with Next.js, FastAPI, and Neon PostgreSQL."
+  version: "1.0.0"
+
+structure:
+  specs: "specs/"
+  features: "specs/features/"
+  api: "specs/api/"
+  database: "specs/database/"
+  frontend: "frontend/"
+  backend: "backend/"
+
+agents:
+  - name: "architecture-planner"
+    role: "System architect and planning"
+  - name: "frontend-engineer"
+    role: "Next.js and UI implementation"
+  - name: "backend-engineer"
+    role: "FastAPI and logic implementation"
+  - name: "database-engineer"
+    role: "SQLModel and schema management"
+
+skills:
+  - architecture_spec_writer
+  - better_auth_jwt_designer
+  - sqlmodel_schema_builder
+  - fastapi_api_builder
+  - nextjs_ui_builder
+  - api_contract_validator
+  - spec_kit_manager
