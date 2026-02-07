@@ -6,7 +6,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { taskApi } from '../../lib/api';
 
 // Define the Task interface
-interface Task {
+export interface Task {
   id: string;
   title: string;
   description?: string;

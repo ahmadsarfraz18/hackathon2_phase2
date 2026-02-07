@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { signIn } from '../../auth';
-import { motion } from 'framer-motion';
+import { motion, easeInOut } from 'framer-motion';
 import NoSSRWrapper from '../../components/NoSSRWrapper';
 
 const LoginPage = () => {
@@ -84,8 +84,8 @@ const LoginPage = () => {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.6,
-        ease: "easeInOut" // Using predefined easing that's definitely typed correctly
+        duration: 0.5,
+        ease: easeInOut
       }
     }
   };
@@ -97,7 +97,7 @@ const LoginPage = () => {
       transition: {
         duration: 4,
         repeat: Infinity,
-        ease: "easeInOut"
+        ease: easeInOut
       }
     }
   };

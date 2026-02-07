@@ -117,23 +117,19 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         const userData = await verifyTokenAndGetUser(token);
         if (userData) {
           setUser(userData);
-          return true;
         } else {
           // Token was invalid, ensure user is null
           setUser(null);
           safeLocalStorage.removeItem('auth-token');
-          return false;
         }
       } else {
         // No token, ensure user is null
         setUser(null);
-        return false;
       }
     } catch (error) {
       console.error('Error checking auth status:', error);
       setUser(null);
       safeLocalStorage.removeItem('auth-token');
-      return false;
     }
   }, []);
 

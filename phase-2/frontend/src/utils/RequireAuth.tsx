@@ -9,20 +9,20 @@ interface RequireAuthProps {
 }
 
 export default function RequireAuth({ children }: RequireAuthProps) {
-  const { user, loading, isMounted, error } = useAuth();
+  const { user, loading, error } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
-    if (isMounted && !loading) {
+    if (!loading) {
       if (!user) {
         // Redirect to login if not authenticated
         router.push('/login');
       }
     }
-  }, [user, loading, isMounted, router]);
+  }, [user, loading, router]);
 
   // Show loading while checking authentication state
-  if (loading || !isMounted) {
+  if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-indigo-50 to-purple-50 py-12 px-4 sm:px-6 lg:px-8">
         <div className="text-center">

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, easeOut, easeInOut } from 'framer-motion';
 import { CheckCircle, Zap, Shield, Users } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 
@@ -27,7 +27,7 @@ const HomePage = () => {
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: easeOut
       }
     }
   };
@@ -50,7 +50,7 @@ const HomePage = () => {
       transition: {
         duration: 4,
         repeat: Infinity,
-        ease: "easeInOut"
+        ease: easeInOut
       }
     }
   };
@@ -61,7 +61,7 @@ const HomePage = () => {
       transition: {
         duration: 2,
         repeat: Infinity,
-        ease: "easeInOut"
+        ease: easeInOut
       }
     }
   };
@@ -122,7 +122,7 @@ const HomePage = () => {
             className="text-3xl md:text-5xl font-bold mb-6 leading-tight"
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
+            transition={{ delay: 0.2, duration: 0.6, ease: easeOut }}
           >
             Transform Your <span className="gradient-text">Productivity</span> with Smart Task Management
           </motion.h2>

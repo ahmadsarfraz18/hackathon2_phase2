@@ -39,8 +39,10 @@ export const TaskList: React.FC<TaskListProps> = ({ tasks, onToggle, onDelete, o
                 {task.title}
               </p>
               {task.description && (
-                <p className="text-sm text-gray-500 truncate sm:hidden">{task.description}</p>
-                <p className="hidden sm:block text-sm text-gray-500">{task.description}</p>
+                <>
+                  <p className="text-sm text-gray-500 truncate sm:hidden">{task.description}</p>
+                  <p className="hidden sm:block text-sm text-gray-500">{task.description}</p>
+                </>
               )}
               <p className="text-xs text-gray-400 mt-1">
                 {new Date(task.created_at).toLocaleDateString()}

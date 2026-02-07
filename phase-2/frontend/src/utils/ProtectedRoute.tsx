@@ -10,25 +10,23 @@ interface ProtectedRouteProps {
 }
 
 export default function ProtectedRoute({ children, fallback }: ProtectedRouteProps) {
-  const { user, loading, isMounted } = useAuth();
+  const { user, loading } = useAuth();
   const router = useRouter();
   const [hasCheckedAuth, setHasCheckedAuth] = useState(false);
 
   useEffect(() => {
-    if (isMounted) {
-      if (!loading) {
-        if (!user) {
-          // Redirect to login if user is not authenticated
-          router.push('/login');
-        } else {
-          setHasCheckedAuth(true);
-        }
+    if (!loading) {
+      if (!user) {
+        // Redirect to login if user is not authenticated
+        router.push('/login');
+      } else {
+        setHasCheckedAuth(true);
       }
     }
-  }, [user, loading, isMounted, router]);
+  }, [user, loading, router]);
 
   // Show loading state while checking authentication
-  if (loading || !isMounted || !hasCheckedAuth) {
+  if (loading || !hasCheckedAuth) {
     return fallback || (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-indigo-50 to-purple-50 py-12 px-4 sm:px-6 lg:px-8">
         <div className="text-center">
