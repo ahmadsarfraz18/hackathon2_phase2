@@ -214,14 +214,12 @@ class ApiClient {
         throw new Error('Resource not found');
       } else {
         // Other error - try to get detailed error information
-        // Clone the response to allow multiple reads
-        const clonedResponse = response.clone();
         try {
-          const errorData = await clonedResponse.json();
+          const errorData = await response.json();
           const errorMessage = errorData.detail || errorData.message || errorData.error || `HTTP error! status: ${response.status}`;
           throw new Error(errorMessage);
         } catch (e) {
-          // If response is not JSON, try to get text from the original response
+          // If response is not JSON, try to get text
           try {
             const errorText = await response.text();
             throw new Error(errorText || `HTTP error! status: ${response.status}`);
@@ -238,14 +236,12 @@ class ApiClient {
     }
 
     // Parse JSON response
-    // Clone the response to allow multiple reads in case json() fails
-    const clonedResponse = response.clone();
     try {
-      const result = await clonedResponse.json();
+      const result = await response.json();
       return result;
     } catch (e) {
       // If response is not JSON, return as text
-      const textResult = await response.text(); // Use original response since clone was consumed
+      const textResult = await response.text();
       return textResult as unknown as T;
     }
   }
