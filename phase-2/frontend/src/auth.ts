@@ -57,11 +57,14 @@ export const signIn = async (credentials: { email: string; password: string; cal
       })
     });
 
+    // Clone the response to allow multiple reads in case of error
+    const clonedResponse = response.clone();
+
     // Handle non-2xx responses
     if (!response.ok) {
       let errorMessage = `Login failed: ${response.status} ${response.statusText}`;
       try {
-        const errorData = await response.json();
+        const errorData = await clonedResponse.json();
         if (errorData.detail) {
           errorMessage = errorData.detail;
         }

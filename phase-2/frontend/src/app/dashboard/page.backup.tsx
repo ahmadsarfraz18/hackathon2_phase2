@@ -41,13 +41,16 @@ export default function DashboardPage() {
         },
       });
 
+      // Clone the response to allow multiple reads
+      const clonedResponse = response.clone();
+
       if (!response.ok) {
         if (response.status === 401) {
           localStorage.removeItem('auth-token');
           window.dispatchEvent(new Event('unauthorized'));
           throw new Error('Unauthorized: Please log in again');
         }
-        const errorData = await response.json().catch(() => ({}));
+        const errorData = await clonedResponse.json().catch(() => ({}));
         throw new Error(errorData.detail || errorData.message || `HTTP error! status: ${response.status}`);
       }
 
@@ -69,13 +72,16 @@ export default function DashboardPage() {
         body: JSON.stringify(taskData),
       });
 
+      // Clone the response to allow multiple reads
+      const clonedResponse = response.clone();
+
       if (!response.ok) {
         if (response.status === 401) {
           localStorage.removeItem('auth-token');
           window.dispatchEvent(new Event('unauthorized'));
           throw new Error('Unauthorized: Please log in again');
         }
-        const errorData = await response.json().catch(() => ({}));
+        const errorData = await clonedResponse.json().catch(() => ({}));
         throw new Error(errorData.detail || errorData.message || `HTTP error! status: ${response.status}`);
       }
 
@@ -97,13 +103,16 @@ export default function DashboardPage() {
         body: JSON.stringify(taskData),
       });
 
+      // Clone the response to allow multiple reads
+      const clonedResponse = response.clone();
+
       if (!response.ok) {
         if (response.status === 401) {
           localStorage.removeItem('auth-token');
           window.dispatchEvent(new Event('unauthorized'));
           throw new Error('Unauthorized: Please log in again');
         }
-        const errorData = await response.json().catch(() => ({}));
+        const errorData = await clonedResponse.json().catch(() => ({}));
         throw new Error(errorData.detail || errorData.message || `HTTP error! status: ${response.status}`);
       }
 
@@ -124,13 +133,16 @@ export default function DashboardPage() {
         },
       });
 
+      // Clone the response to allow multiple reads
+      const clonedResponse = response.clone();
+
       if (!response.ok) {
         if (response.status === 401) {
           localStorage.removeItem('auth-token');
           window.dispatchEvent(new Event('unauthorized'));
           throw new Error('Unauthorized: Please log in again');
         }
-        const errorData = await response.json().catch(() => ({}));
+        const errorData = await clonedResponse.json().catch(() => ({}));
         throw new Error(errorData.detail || errorData.message || `HTTP error! status: ${response.status}`);
       }
 

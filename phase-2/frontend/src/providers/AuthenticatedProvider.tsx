@@ -190,8 +190,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         }),
       });
 
+      // Clone the response to allow multiple reads
+      const clonedResponse = response.clone();
+
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
+        const errorData = await clonedResponse.json().catch(() => ({}));
         const errorMessage = errorData.detail || errorData.message || 'Signup failed';
         throw new Error(errorMessage);
       }

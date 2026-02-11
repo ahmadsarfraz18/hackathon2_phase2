@@ -179,8 +179,11 @@ export const SecureAuthProvider = ({ children }: { children: ReactNode }) => {
         body: JSON.stringify({ email, password }),
       });
 
+      // Clone the response to allow multiple reads
+      const clonedResponse = response.clone();
+
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
+        const errorData = await clonedResponse.json().catch(() => ({}));
         throw new Error(errorData.detail || 'Login failed');
       }
 
